@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Divine Discussions</title>
+    <meta
+      name="description"
+      content="Divine Discussions — apologetics, faith, and thoughtful conversations."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="Divine Discussions Home">
+        <!-- Logo (SVG): linked DD + globe ring -->
+        <svg
+          class="logo"
+          viewBox="0 0 240 240"
+          role="img"
+          aria-label="Divine Discussions logo: linked DD with globe ring"
+        >
+          <defs>
+            <linearGradient id="ddGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="currentColor" stop-opacity="0.95" />
+              <stop offset="100%" stop-color="currentColor" stop-opacity="0.65" />
+            </linearGradient>
+
+            <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="2.4" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+
+            <!-- Globe ring path -->
+            <path
+              id="orbit"
+              d="M120,26
+                 a94,94 0 1,1 0,188
+                 a94,94 0 1,1 0,-188"
+            />
+          </defs>
+
+          <!-- Globe ring (orbit) -->
+          <g opacity="0.9">
+            <use href="#orbit" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" opacity="0.35" />
+            <use href="#orbit" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10 10" opacity="0.55" />
+          </g>
+
+          <!-- Longitude / latitude style lines -->
+          <g opacity="0.25">
+            <ellipse cx="120" cy="120" rx="66" ry="88" fill="none" stroke="currentColor" stroke-width="2" />
+            <ellipse cx="120" cy="120" rx="88" ry="66" fill="none" stroke="currentColor" stroke-width="2" />
+            <path d="M120 36 V204" stroke="currentColor" stroke-width="2" />
+            <path d="M36 120 H204" stroke="currentColor" stroke-width="2" />
+          </g>
+
+          <!-- Linked Double D monogram -->
+          <g filter="url(#softGlow)">
+            <!-- Left D -->
+            <path
+              d="M72 70
+                 h42
+                 c26 0 46 20 46 50
+                 s-20 50-46 50
+                 H72
+                 Z
+                 M92 88
+                 v64
+                 h20
+                 c16 0 28-13 28-32
+                 s-12-32-28-32
+                 H92
+                 Z"
+              fill="url(#ddGrad)"
+              opacity="0.98"
+            />
+
+            <!-- Right D (slightly overlapped/linked) -->
+            <path
+              d="M114 70
+                 h42
+                 c26 0 46 20 46 50
+                 s-20 50-46 50
+                 h-42
+                 Z
+                 M134 88
+                 v64
+                 h20
+                 c16 0 28-13 28-32
+                 s-12-32-28-32
+                 h-20
+                 Z"
+              fill="url(#ddGrad)"
+              opacity="0.9"
+            />
+
+            <!-- Link bridge (subtle connection) -->
+            <path
+              d="M112 96
+                 c10-10 24-10 34 0
+                 v48
+                 c-10 10-24 10-34 0
+                 Z"
+              fill="currentColor"
+              opacity="0.18"
+            />
+          </g>
+
+          <!-- Small “comet” dot on orbit -->
+          <circle cx="188" cy="78" r="6" fill="currentColor" opacity="0.75" />
+        </svg>
+
+        <div class="brand-text">
+          <div class="brand-name">Divine Discussions</div>
+          <div class="brand-tagline">Apologetics • Faith • Thoughtful Conversation</div>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <a href="#mission">Mission</a>
+        <a href="#merch">Merch</a>
+        <a href="#purpose">Purpose</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <div class="hero-copy">
+          <h1>Where faith meets reason.</h1>
+          <p>
+            Divine Discussions is a modern space for apologetics—clear answers, honest questions,
+            and conversations that build conviction.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn primary" href="#mission">Explore Mission</a>
+            <a class="btn" href="#merch">Shop Merch</a>
+          </div>
+
+          <div class="pill-row" aria-label="Highlights">
+            <span class="pill">Biblical clarity</span>
+            <span class="pill">Respectful dialogue</span>
+            <span class="pill">Resources & community</span>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <div class="glass-card">
+            <div class="glass-title">New Here?</div>
+            <div class="glass-body">
+              Start with the basics: who Jesus is, why the Bible is reliable, and how to answer tough questions.
+            </div>
+            <button class="mini-btn" id="randomPromptBtn" type="button">Give me a discussion prompt</button>
+            <div class="prompt" id="promptOut" aria-live="polite"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="tiles" aria-label="Main sections">
+        <a class="tile" id="mission" href="#mission" data-tile="mission">
+          <div class="tile-icon">✦</div>
+          <h2>Mission</h2>
+          <p>Equip believers with thoughtful, Scripture-rooted answers—and invite seekers into honest exploration.</p>
+          <span class="tile-link">Learn more →</span>
+        </a>
+
+        <a class="tile" id="merch" href="#merch" data-tile="merch">
+          <div class="tile-icon">⬡</div>
+          <h2>Merch</h2>
+          <p>Wear the message. Minimal, clean designs with purpose—coming soon (or link your store here).</p>
+          <span class="tile-link">Browse →</span>
+        </a>
+
+        <a class="tile" id="purpose" href="#purpose" data-tile="purpose">
+          <div class="tile-icon">◎</div>
+          <h2>Purpose</h2>
+          <p>Build a community of conversations that strengthen faith, sharpen thinking, and reflect Christ.</p>
+          <span class="tile-link">Read more →</span>
+        </a>
+      </section>
+
+      <section class="content" aria-label="Details">
+        <div class="content-block" data-section="mission">
+          <h3>Mission</h3>
+          <p>
+            We exist to make apologetics accessible—short explanations, longer studies, and tools for meaningful
+            discussions.
+          </p>
+          <ul>
+            <li>Answer common objections with clarity</li>
+            <li>Share resources for Bible reliability and theology</li>
+            <li>Model patient, respectful dialogue</li>
+          </ul>
+        </div>
+
+        <div class="content-block" data-section="merch">
+          <h3>Merch</h3>
+          <p>
+            Add your store link (Shopify, Etsy, Printful, etc.). For now this is a placeholder section you can expand.
+          </p>
+          <div class="code-note">
+            Tip: Replace the Merch tile link with your store URL when ready.
+          </div>
+        </div>
+
+        <div class="content-block" data-section="purpose">
+          <h3>Purpose</h3>
+          <p>
+            Our goal is a calm, confident witness—rooted in truth, expressed with love, and focused on real people.
+          </p>
+          <ul>
+            <li>Encourage discipleship</li>
+            <li>Support seekers</li>
+            <li>Create shareable content for conversations</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>© <span id="year"></span> Divine Discussions</div>
+      <div class="footer-links">
+        <a href="#mission">Mission</a>
+        <a href="#merch">Merch</a>
+        <a href="#purpose">Purpose</a>
+      </div>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
